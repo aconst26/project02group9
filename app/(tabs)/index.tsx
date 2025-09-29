@@ -66,7 +66,7 @@ const Index = () => {
         <Image source={loginPicture} style={styles.image} resizeMode="cover" />
       </View>
       <View style={styles.footerContainer}>
-        <Button theme="primary" label="Login" onPress={handleLogin} />{" "}
+        <Button theme="primary" label="Login" onPress={handleLogin} />
         {/* Add onPress to navigate */}
         <Button label="Create Account" onPress={handleCreateAccount} />
       </View>
