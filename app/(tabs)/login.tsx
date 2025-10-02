@@ -35,7 +35,10 @@ export default function LoginScreen() {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ username, password }),
+        body: JSON.stringify({ 
+          userName: username, 
+          userPassword: password 
+        }),
       });
   
       const data = await response.json();
@@ -43,10 +46,10 @@ export default function LoginScreen() {
   
       if (response.ok) { // Might need to change when we implement AUTH
         await AsyncStorage.setItem("userID", data.id.toString());
-        await AsyncStorage.setItem("username", data.username);
-  
-        Alert.alert("Welcome", `Hello, ${data.username}!`); // Testing purposes
-        navigation.navigate("FavoriteTeams", { username: data.username });
+        await AsyncStorage.setItem("username", data.userName);
+
+        Alert.alert("Welcome", `Hello, ${data.userName}!`);
+        navigation.navigate("FavoriteTeams", { username: data.userName });
       } else {
         Alert.alert("Error", data.message || "Login failed.");
       }
